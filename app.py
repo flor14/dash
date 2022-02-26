@@ -8,7 +8,7 @@ from vega_datasets import data
 cars = data.cars()
 
 # Setup app and layout/frontend
-app = dash.Dash(__name__,  external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
+app = Dash(__name__,  external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 server = app.server
 
 app.layout = html.Div([
@@ -26,8 +26,8 @@ app.layout = html.Div([
     Input('xcol-widget', 'value'))
 def plot_altair(xcol):
     chart = alt.Chart(cars).mark_point().encode(
-        x=xcol,
-        y='Displacement',
+        x= 'Displacement',
+        y= xcol,
         tooltip='Horsepower').interactive()
     return chart.to_html()
 
